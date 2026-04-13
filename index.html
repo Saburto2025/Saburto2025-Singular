@@ -18,7 +18,6 @@
         .border-singular-yellow { border-color: #FFD200; }
         .btn-hover:hover { filter: brightness(90%); transition: 0.3s; }
         
-        /* Contenedor de Video (Vertical/Reel) */
         .reel-container {
             position: relative;
             width: 100%;
@@ -39,9 +38,8 @@
             border: none;
         }
 
-        /* Envoltorio del Video Hero */
-        .hero-video-wrapper {
-            max-width: 280px;
+        .hero-image-wrapper {
+            max-width: 450px;
             margin: 0 auto;
         }
 
@@ -49,43 +47,49 @@
             .reel-container { padding-top: 177.77%; }
         }
 
-        /* Ajuste de línea para títulos grandes en móvil */
         h1 {
             line-height: 1.1 !important;
+        }
+
+        /* Estilos para el toggle de idioma */
+        .lang-btn.active {
+            background-color: #FFD200;
+            color: #000;
         }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Header / Nav -->
-    <header class="bg-black text-white py-4 px-4 sm:px-6 sticky top-0 z-50 shadow-md border-b border-gray-900">
+    <header class="bg-black text-white py-6 px-4 sm:px-6 sticky top-0 z-50 shadow-md border-b border-gray-900">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <div class="bg-singular-yellow h-8 w-2"></div>
-                <span class="text-lg font-extrabold tracking-tighter uppercase italic">Singular Glass</span>
+            <div class="flex items-center space-x-3">
+                <div class="bg-singular-yellow h-12 w-3"></div>
+                <!-- Nombre 100% más grande (de text-lg/xl a text-2xl/4xl) -->
+                <span class="text-2xl sm:text-4xl font-black tracking-tighter uppercase italic">Singular Glass</span>
             </div>
             
             <!-- Desktop Nav -->
             <div class="hidden md:flex items-center space-x-4 lg:space-x-8 text-xs font-bold uppercase tracking-widest text-gray-400">
-                <a href="#soluciones" class="hover:text-singular-yellow transition">Soluciones</a>
-                <a href="#proyectos" class="hover:text-singular-yellow transition">Proyectos</a>
-                <a href="#casos" class="hover:text-singular-yellow transition">Casos</a>
-                <a href="#catalogo" class="hover:text-singular-yellow transition text-singular-yellow font-black">Catálogo</a>
+                <a href="#soluciones" data-i18n="nav-soluciones" class="hover:text-singular-yellow transition">Soluciones</a>
+                <a href="#proyectos" data-i18n="nav-proyectos" class="hover:text-singular-yellow transition">Proyectos</a>
+                <a href="#casos" data-i18n="nav-casos" class="hover:text-singular-yellow transition">Casos</a>
+                <a href="#catalogo" data-i18n="nav-catalogo" class="hover:text-singular-yellow transition text-singular-yellow font-black">Catálogo</a>
                 
-                <!-- Selector de Idioma -->
+                <!-- Selector de Idioma Desktop -->
                 <div class="flex items-center border border-gray-800 rounded-full overflow-hidden bg-gray-900 ml-2">
-                    <button class="bg-singular-yellow text-black px-2 py-1 text-[10px] font-black">ES</button>
-                    <button class="px-2 py-1 text-[10px] hover:text-white transition">EN</button>
+                    <button onclick="switchLanguage('es')" class="lang-btn es-btn active px-2 py-1 text-[10px] font-black transition-colors">ES</button>
+                    <button onclick="switchLanguage('en')" class="lang-btn en-btn px-2 py-1 text-[10px] font-black transition-colors hover:text-white">EN</button>
                 </div>
 
-                <a href="https://wa.me/13050000000" class="bg-singular-yellow text-black px-6 py-2 rounded-sm btn-hover font-black">Cotizar</a>
+                <a href="https://wa.me/13050000000" data-i18n="btn-cotizar" class="bg-singular-yellow text-black px-6 py-2 rounded-sm btn-hover font-black">Cotizar</a>
             </div>
 
             <!-- Mobile Toggle / Language -->
             <div class="flex items-center space-x-3 md:hidden">
                 <div class="flex items-center border border-gray-800 rounded-full overflow-hidden bg-gray-900">
-                    <button class="bg-singular-yellow text-black px-2 py-1 text-[9px] font-black">ES</button>
-                    <button class="px-2 py-1 text-[9px] text-gray-400">EN</button>
+                    <button onclick="switchLanguage('es')" class="lang-btn es-btn active px-2 py-1 text-[9px] font-black transition-colors">ES</button>
+                    <button onclick="switchLanguage('en')" class="lang-btn en-btn px-2 py-1 text-[9px] text-gray-400 transition-colors">EN</button>
                 </div>
                 <button id="menu-toggle" class="text-white focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
@@ -96,11 +100,11 @@
         <!-- Mobile Nav Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-black border-t border-gray-800 absolute w-full left-0 py-8 px-6 shadow-2xl">
             <div class="flex flex-col space-y-6 text-center text-sm font-bold uppercase tracking-widest">
-                <a href="#soluciones" class="text-gray-400 py-2">Soluciones</a>
-                <a href="#proyectos" class="text-gray-400 py-2">Proyectos</a>
-                <a href="#casos" class="text-gray-400 py-2">Casos de Éxito</a>
-                <a href="#catalogo" class="text-singular-yellow py-2 underline decoration-singular-yellow underline-offset-8">Catálogo 2025</a>
-                <a href="https://wa.me/13050000000" class="bg-singular-yellow text-black px-6 py-4 rounded-sm font-black mt-4">Cotizar vía WhatsApp</a>
+                <a href="#soluciones" data-i18n="nav-soluciones" class="text-gray-400 py-2">Soluciones</a>
+                <a href="#proyectos" data-i18n="nav-proyectos" class="text-gray-400 py-2">Proyectos</a>
+                <a href="#casos" data-i18n="nav-casos" class="text-gray-400 py-2">Casos de Éxito</a>
+                <a href="#catalogo" data-i18n="nav-catalogo" class="text-singular-yellow py-2 underline decoration-singular-yellow underline-offset-8">Catálogo 2025</a>
+                <a href="https://wa.me/13050000000" class="bg-singular-yellow text-black px-6 py-4 rounded-sm font-black mt-4" data-i18n="btn-whatsapp">Cotizar vía WhatsApp</a>
             </div>
         </div>
     </header>
@@ -112,40 +116,35 @@
             <div class="text-center md:text-left order-1">
                 <span class="inline-block bg-singular-yellow text-black text-[10px] font-black px-3 py-1 uppercase mb-6 tracking-[0.2em]">Authorized Partner CRL & U.S. Aluminum</span>
                 <h1 class="text-3xl sm:text-5xl lg:text-7xl font-extrabold mb-6 uppercase tracking-tighter">
-                    Atención Personalizada <br class="hidden md:block"> y <span class="text-singular-yellow">Pedidos Exprés</span>.
+                    <span data-i18n="hero-title-1">Atención Personalizada</span> <br class="hidden md:block"> <span data-i18n="hero-title-2">y</span> <span class="text-singular-yellow" data-i18n="hero-title-3">Pedidos Exprés</span>.
                 </h1>
                 
-                <p class="text-gray-300 text-sm sm:text-lg mb-4 italic leading-relaxed max-w-lg mx-auto md:mx-0">
+                <p class="text-gray-300 text-sm sm:text-lg mb-4 italic leading-relaxed max-w-lg mx-auto md:mx-0" data-i18n="hero-question">
                     ¿Te ha pasado que estás a mitad de un proyecto y te quedas sin materiales por falta de un envío eficaz?
                 </p>
                 
-                <p class="text-gray-400 text-sm sm:text-base mb-10 max-w-lg mx-auto md:mx-0 leading-relaxed">
+                <p class="text-gray-400 text-sm sm:text-base mb-10 max-w-lg mx-auto md:mx-0 leading-relaxed" data-i18n="hero-desc">
                     En Singular Glass suministramos herrajes certificados para proyectos de alto tráfico. Envíos de costa a costa desde Medley, FL. Agilidad vía WhatsApp para el contratista moderno.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                    <a href="https://wa.me/13050000000" class="bg-singular-yellow text-black text-center px-8 py-5 font-black uppercase tracking-widest btn-hover shadow-xl text-sm w-full sm:w-auto">
+                    <a href="https://wa.me/13050000000" data-i18n="btn-whatsapp" class="bg-singular-yellow text-black text-center px-8 py-5 font-black uppercase tracking-widest btn-hover shadow-xl text-sm w-full sm:w-auto">
                         Cotizar vía WhatsApp
                     </a>
-                    <a href="#catalogo" class="border-2 border-white text-white text-center px-8 py-5 font-black uppercase tracking-widest hover:bg-white hover:text-black transition text-sm w-full sm:w-auto">
+                    <a href="#catalogo" data-i18n="btn-catalog" class="border-2 border-white text-white text-center px-8 py-5 font-black uppercase tracking-widest hover:bg-white hover:text-black transition text-sm w-full sm:w-auto">
                         Ver Catálogo 2025
                     </a>
                 </div>
             </div>
             
-            <!-- Video Column -->
+            <!-- Imagen Publicitaria (Sustituye al video aquí) -->
             <div class="flex justify-center items-center mt-8 md:mt-0 order-2">
-                <div class="hero-video-wrapper relative w-full">
+                <div class="hero-image-wrapper relative w-full">
                     <div class="absolute -top-4 -left-4 w-12 h-12 md:w-16 md:h-16 border-t-4 border-l-4 border-singular-yellow z-0 opacity-50"></div>
                     <div class="absolute -bottom-4 -right-4 w-12 h-12 md:w-16 md:h-16 border-b-4 border-r-4 border-singular-yellow z-0 opacity-50"></div>
-                    <div class="reel-container z-10">
-                        <iframe 
-                            src="https://www.youtube.com/embed/xcPl4XPESTg" 
-                            title="Singular Glass Intro" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_rqup90vUJUmPwo5LE5bB-f0QSYgX_OT9lq9Rm9tgsf5Zg6Zx5p2fCKC9GKi2_yZyyp9A0s_1YcquQ1fUxIKe84_2_gWk1hs34KjGFwM1BYqWZiPvA26bI1AtwTOwX4X-pdPKeOu_Cm88VhJSgbXmU7gHkUBzT_MjC964E_yOcw_Z3SmJMn1W-LKAi-DF/s320/Publicidad%20de%20hardware%20para%20puertas%20de%20vidrio.png" 
+                         alt="Publicidad Hardware Singular Glass" 
+                         class="w-full h-auto rounded-lg shadow-2xl relative z-10">
                 </div>
             </div>
         </div>
@@ -156,160 +155,140 @@
         <div class="max-w-7xl mx-auto mb-16 text-center md:text-left">
             <div class="flex items-center justify-center md:justify-start space-x-4">
                 <div class="h-[2px] w-12 bg-black"></div>
-                <h2 class="text-xs font-black uppercase tracking-[0.4em] text-gray-500">Nuestra Ventaja Competitiva</h2>
+                <h2 class="text-xs font-black uppercase tracking-[0.4em] text-gray-500" data-i18n="puv-tag">Nuestra Ventaja Competitiva</h2>
             </div>
         </div>
         
         <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-            <!-- 01: Adiós a la Burocracia -->
+            <!-- 01 -->
             <div class="bg-white p-8 shadow-md flex flex-col h-full border-b-8 border-black hover:shadow-2xl transition-all group">
                 <div class="w-10 h-10 bg-black text-singular-yellow flex items-center justify-center mb-6 font-black text-sm group-hover:bg-singular-yellow group-hover:text-black transition-colors">01</div>
-                <h3 class="text-lg font-black mb-4 uppercase tracking-tight leading-none">Adiós a la Burocracia</h3>
-                <p class="text-gray-500 text-[11px] mb-6 flex-grow leading-relaxed">
+                <h3 class="text-lg font-black mb-4 uppercase tracking-tight leading-none" data-i18n="puv-1-t">Adiós a la Burocracia</h3>
+                <p class="text-gray-500 text-[11px] mb-6 flex-grow leading-relaxed" data-i18n="puv-1-d">
                     El tiempo es dinero en obra. Olvide los formularios infinitos. Cotice y pida sus herrajes en segundos vía WhatsApp.
                 </p>
                 <a href="https://wa.me/13050000000" class="text-[10px] font-black uppercase tracking-widest text-black flex items-center group-hover:text-singular-yellow transition-colors mt-auto">
-                    Consultar WhatsApp
+                    <span data-i18n="card-cta-wa">Consultar WhatsApp</span>
                     <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
             </div>
 
-            <!-- 02: Precios de Proyecto -->
+            <!-- 02 -->
             <div class="bg-white p-8 shadow-md flex flex-col h-full border-b-8 border-singular-yellow hover:shadow-2xl transition-all group">
                 <div class="w-10 h-10 bg-singular-yellow text-black flex items-center justify-center mb-6 font-black text-sm text-black">02</div>
-                <h3 class="text-lg font-black mb-4 uppercase tracking-tight leading-none">Precios de Proyecto</h3>
-                <p class="text-gray-500 text-[11px] mb-6 flex-grow leading-relaxed">
+                <h3 class="text-lg font-black mb-4 uppercase tracking-tight leading-none" data-i18n="puv-2-t">Precios de Proyecto</h3>
+                <p class="text-gray-500 text-[11px] mb-6 flex-grow leading-relaxed" data-i18n="puv-2-d">
                     Proteja sus márgenes. Ofrecemos tarifas comerciales exclusivas y escalabilidad para proyectos B2B de gran volumen.
                 </p>
                 <a href="https://wa.me/13050000000" class="text-[10px] font-black uppercase tracking-widest text-black flex items-center group-hover:text-singular-yellow transition-colors mt-auto">
-                    Pedir Cotización
+                    <span data-i18n="card-cta-price">Pedir Cotización</span>
                     <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
             </div>
 
-            <!-- 03: Respaldo Certificado -->
+            <!-- 03 -->
             <div class="bg-white p-8 shadow-md flex flex-col h-full border-b-8 border-black hover:shadow-2xl transition-all group">
                 <div class="w-10 h-10 bg-black text-singular-yellow flex items-center justify-center mb-6 font-black text-sm group-hover:bg-singular-yellow group-hover:text-black transition-colors">03</div>
-                <h3 class="text-lg font-black mb-4 uppercase tracking-tight leading-none">Respaldo Certificado</h3>
-                <p class="text-gray-500 text-[11px] mb-6 flex-grow leading-relaxed">
+                <h3 class="text-lg font-black mb-4 uppercase tracking-tight leading-none" data-i18n="puv-3-t">Respaldo Certificado</h3>
+                <p class="text-gray-500 text-[11px] mb-6 flex-grow leading-relaxed" data-i18n="puv-3-d">
                     Authorized Partner de CRL y U.S. Aluminum. Suministramos hardware con garantía oficial para alto tráfico.
                 </p>
                 <a href="https://wa.me/13050000000" class="text-[10px] font-black uppercase tracking-widest text-black flex items-center group-hover:text-singular-yellow transition-colors mt-auto">
-                    Ver Garantías
+                    <span data-i18n="card-cta-warranty">Ver Garantías</span>
                     <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
             </div>
 
-            <!-- 04: Acabados Cohesivos -->
+            <!-- 04 -->
             <div class="bg-white p-8 shadow-md flex flex-col h-full border-b-8 border-singular-yellow hover:shadow-2xl transition-all group">
                 <div class="w-10 h-10 bg-singular-yellow text-black flex items-center justify-center mb-6 font-black text-sm text-black">04</div>
-                <h3 class="text-lg font-black mb-4 uppercase tracking-tight leading-none">Acabados Cohesivos</h3>
-                <p class="text-gray-500 text-[11px] mb-6 flex-grow leading-relaxed">
+                <h3 class="text-lg font-black mb-4 uppercase tracking-tight leading-none" data-i18n="puv-4-t">Acabados Cohesivos</h3>
+                <p class="text-gray-500 text-[11px] mb-6 flex-grow leading-relaxed" data-i18n="puv-4-d">
                     Ecosistema total en Chrome, Matte Black y Satin Brass. El mismo tono exacto en cada pieza de su proyecto.
                 </p>
                 <a href="https://wa.me/13050000000" class="text-[10px] font-black uppercase tracking-widest text-black flex items-center group-hover:text-singular-yellow transition-colors mt-auto">
-                    Gama de Colores
+                    <span data-i18n="card-cta-colors">Gama de Colores</span>
                     <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
             </div>
 
-            <!-- 05: Logística Nacional -->
+            <!-- 05 -->
             <div class="bg-white p-8 shadow-md flex flex-col h-full border-b-8 border-black hover:shadow-2xl transition-all group">
                 <div class="w-10 h-10 bg-black text-singular-yellow flex items-center justify-center mb-6 font-black text-sm group-hover:bg-singular-yellow group-hover:text-black transition-colors">05</div>
-                <h3 class="text-lg font-black mb-4 uppercase tracking-tight leading-none">Logística Nacional</h3>
-                <p class="text-gray-500 text-[11px] mb-6 flex-grow leading-relaxed">
+                <h3 class="text-lg font-black mb-4 uppercase tracking-tight leading-none" data-i18n="puv-5-t">Logística Nacional</h3>
+                <p class="text-gray-500 text-[11px] mb-6 flex-grow leading-relaxed" data-i18n="puv-5-d">
                     Desde Medley, Florida, despachamos de costa a costa con embalaje industrial reforzado para seguridad total.
                 </p>
                 <a href="https://wa.me/13050000000" class="text-[10px] font-black uppercase tracking-widest text-black flex items-center group-hover:text-singular-yellow transition-colors mt-auto">
-                    Cotizar Envío
+                    <span data-i18n="card-cta-log">Cotizar Envío</span>
                     <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Galería de Videos (Proyectos en Acción) -->
+    <!-- Proyectos en Acción (Video Intro Reubicado aquí) -->
     <section id="proyectos" class="py-16 px-6 bg-white border-t border-gray-100">
         <div class="max-w-7xl mx-auto">
             <div class="flex items-center justify-center md:justify-start space-x-4 mb-12">
                 <div class="h-[2px] w-12 bg-singular-yellow"></div>
-                <h2 class="text-xs font-black uppercase tracking-[0.4em] text-gray-400">Proyectos en Acción</h2>
+                <h2 class="text-xs font-black uppercase tracking-[0.4em] text-gray-400" data-i18n="projects-tag">Proyectos en Acción</h2>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
-                <div class="reel-container">
-                    <iframe 
-                        src="https://www.youtube.com/embed/st7yTL183xI" 
-                        title="Singular Glass Proyecto 1" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <div class="reel-container">
-                    <iframe 
-                        src="https://www.youtube.com/embed/ks1Wg2j3yBA" 
-                        title="Singular Glass Proyecto 2" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <div class="reel-container">
-                    <iframe 
-                        src="https://www.youtube.com/embed/x1Z7HU0anlQ" 
-                        title="Singular Glass Proyecto 3" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
+            <!-- Ahora son 4 videos (el intro original + los 3 de proyectos) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                <!-- Video Intro (REUBICADO) -->
+                <div class="reel-container"><iframe src="https://www.youtube.com/embed/xcPl4XPESTg" allowfullscreen></iframe></div>
+                <!-- Otros Videos -->
+                <div class="reel-container"><iframe src="https://www.youtube.com/embed/st7yTL183xI" allowfullscreen></iframe></div>
+                <div class="reel-container"><iframe src="https://www.youtube.com/embed/ks1Wg2j3yBA" allowfullscreen></iframe></div>
+                <div class="reel-container"><iframe src="https://www.youtube.com/embed/x1Z7HU0anlQ" allowfullscreen></iframe></div>
             </div>
         </div>
     </section>
 
-    <!-- Sección de Casos de Éxito -->
+    <!-- Casos de Éxito -->
     <section id="casos" class="py-16 md:py-24 px-6 bg-gray-50 border-t border-gray-100">
         <div class="max-w-7xl mx-auto">
             <div class="flex items-center justify-center md:justify-start space-x-4 mb-12">
                 <div class="h-[2px] w-12 bg-black"></div>
-                <h2 class="text-xs font-black uppercase tracking-[0.4em] text-gray-500">Casos de Éxito</h2>
+                <h2 class="text-xs font-black uppercase tracking-[0.4em] text-gray-500" data-i18n="cases-tag">Casos de Éxito</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Caso 1 -->
                 <div class="bg-white shadow-md flex flex-col h-full overflow-hidden">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg6MoBdCCh7E4cVhEPM9g-Rm6yVRGwyCRQ_-Awk87ACctr-3ivpffoBJmKTQU8HbCm7JDs_El3LkeF3DYDcmjcG4jgXRqFWZK5FrTSx1a2F5nbuy9Y4mT1YPz2Ae1zvLrIfjJiKBLMyA5vb2lV4N7p471ur5b-foXZnaDd5G5kuAHmiCGS1pUfrOfzYvXAA/s320/2.png" alt="Coherencia Visual" class="w-full h-auto object-contain">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg6MoBdCCh7E4cVhEPM9g-Rm6yVRGwyCRQ_-Awk87ACctr-3ivpffoBJmKTQU8HbCm7JDs_El3LkeF3DYDcmjcG4jgXRqFWZK5FrTSx1a2F5nbuy9Y4mT1YPz2Ae1zvLrIfjJiKBLMyA5vb2lV4N7p471ur5b-foXZnaDd5G5kuAHmiCGS1pUfrOfzYvXAA/s320/2.png" alt="Interior Designer" class="w-full h-auto object-contain">
                     <div class="p-8 border-l-4 border-singular-yellow flex flex-col flex-grow">
-                        <h3 class="text-sm font-black uppercase tracking-widest mb-4 text-black text-center md:text-left">Coherencia Visual</h3>
-                        <p class="text-gray-600 leading-relaxed italic text-sm mb-6">
-                            "María estaba frustrada porque las bisagras de la ducha y los soportes de la escalera nunca tenían el mismo tono de dorado. Descubrió Singular Glass y pudo pedir Kits de ducha cuadrados, abrazaderas y separadores de barandilla (Standoffs) todos exactamente en el mismo Latón Satinado, unificando toda la casa."
+                        <h3 class="text-sm font-black uppercase tracking-widest mb-4 text-black" data-i18n="case-1-t">Coherencia Visual</h3>
+                        <p class="text-gray-600 leading-relaxed italic text-sm mb-6" data-i18n="case-1-d">
+                            "María estaba frustrada porque las bisagras de la ducha y los soportes de la escalera nunca tenían el mismo tono de dorado. Descubrió Singular Glass y pudo pedir Kits de ducha cuadrados, abrazaderas y separadores de barandilla (Standoffs) todos exactamente en el mismo Latón Satinado."
                         </p>
-                        <div class="mt-auto text-center md:text-left">
-                            <p class="font-bold text-xs uppercase tracking-tighter">— María, Diseñadora de Interiores</p>
-                        </div>
+                        <div class="mt-auto"><p class="font-bold text-xs uppercase tracking-tighter" data-i18n="case-1-n">— María, Diseñadora de Interiores</p></div>
                     </div>
                 </div>
 
                 <!-- Caso 2 -->
                 <div class="bg-white shadow-md flex flex-col h-full overflow-hidden">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEia13lOULrBPbN8TMrffhSXwAduQsaDceedQkOe3RdnjOgSlVqX2FdXuzgDMlmUsXQ1fnaXEKGjs3zVWVrkYX8cX_rCD8AA5dqyRqDSTIBOzla78WI4zw2voK8D0zV07oF2kf2TRgLnsYVc0kZE1bsLYvnw60pVSZCojcyBsiNy8oPnmAOl-ixNn3UCBvng/s320/1.png" alt="Urgencia en Obra" class="w-full h-auto object-contain">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEia13lOULrBPbN8TMrffhSXwAduQsaDceedQkOe3RdnjOgSlVqX2FdXuzgDMlmUsXQ1fnaXEKGjs3zVWVrkYX8cX_rCD8AA5dqyRqDSTIBOzla78WI4zw2voK8D0zV07oF2kf2TRgLnsYVc0kZE1bsLYvnw60pVSZCojcyBsiNy8oPnmAOl-ixNn3UCBvng/s320/1.png" alt="Contractor" class="w-full h-auto object-contain">
                     <div class="p-8 border-l-4 border-black flex flex-col flex-grow">
-                        <h3 class="text-sm font-black uppercase tracking-widest mb-4 text-black text-center md:text-left">Urgencia en Obra</h3>
-                        <p class="text-gray-600 leading-relaxed italic text-sm mb-6">
-                            "A Carlos le falló su proveedor local a mitad de una remodelación en otro estado. Usó el servicio de Pedido Exprés por WhatsApp de Singular. La atención fue inmediata y gracias a su envío seguro de costa a costa, recibió los Sistemas de 4 Rodillos a tiempo para no retrasar la obra."
+                        <h3 class="text-sm font-black uppercase tracking-widest mb-4 text-black" data-i18n="case-2-t">Urgencia en Obra</h3>
+                        <p class="text-gray-600 leading-relaxed italic text-sm mb-6" data-i18n="case-2-d">
+                            "A Carlos le falló su proveedor local a mitad de una remodelación. Usó el servicio de Pedido Exprés de Singular. Gracias a su envío seguro de costa a costa, recibió los Sistemas de 4 Rodillos a tiempo para no retrasar la obra."
                         </p>
-                        <div class="mt-auto text-center md:text-left">
-                            <p class="font-bold text-xs uppercase tracking-tighter">— Carlos, Contratista de Proyectos</p>
-                        </div>
+                        <div class="mt-auto"><p class="font-bold text-xs uppercase tracking-tighter" data-i18n="case-2-n">— Carlos, Contratista de Proyectos</p></div>
                     </div>
                 </div>
 
                 <!-- Caso 3 -->
                 <div class="bg-white shadow-md flex flex-col h-full overflow-hidden">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1u2Bhd2_ACQ18MuSY7Rh85Mg1T_myMc316hCPFpaGKpP6gby4OKrOluNsg-LcuhUD0dR7S5PFVnEOyHiJNXI6qi_vohB58bh30s1m_XVJNHJDk9Ykmtne6OlLWz3eH9VKVMHWQt7vTY_wHbnAZlmdwOv5-EMk3jtyc9ph3GTsoW5j10ELmAk9U98QJZkm/s320/3.png" alt="Adaptabilidad Técnica" class="w-full h-auto object-contain">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1u2Bhd2_ACQ18MuSY7Rh85Mg1T_myMc316hCPFpaGKpP6gby4OKrOluNsg-LcuhUD0dR7S5PFVnEOyHiJNXI6qi_vohB58bh30s1m_XVJNHJDk9Ykmtne6OlLWz3eH9VKVMHWQt7vTY_wHbnAZlmdwOv5-EMk3jtyc9ph3GTsoW5j10ELmAk9U98QJZkm/s320/3.png" alt="Architect" class="w-full h-auto object-contain">
                     <div class="p-8 border-l-4 border-singular-yellow flex flex-col flex-grow">
-                        <h3 class="text-sm font-black uppercase tracking-widest mb-4 text-black text-center md:text-left">Adaptabilidad Técnica</h3>
-                        <p class="text-gray-600 leading-relaxed italic text-sm mb-6">
-                            "Diseñar una barandilla de vidrio para una escalera curva era un dolor de cabeza para el equipo de David. Singular Glass no solo les proveyó tubos pasamanos de gran formato (120 pulgadas), sino que los soportes de pasamanos ajustables ($28.00) les permitieron adaptar el hardware al ángulo exacto de la escalera fácilmente."
+                        <h3 class="text-sm font-black uppercase tracking-widest mb-4 text-black" data-i18n="case-3-t">Adaptabilidad Técnica</h3>
+                        <p class="text-gray-600 leading-relaxed italic text-sm mb-6" data-i18n="case-3-d">
+                            "Diseñar una barandilla curva era un problema. Singular Glass proveyó tubos pasamanos de gran formato y soportes ajustables que permitieron adaptar el hardware al ángulo exacto fácilmente."
                         </p>
-                        <div class="mt-auto text-center md:text-left">
-                            <p class="font-bold text-xs uppercase tracking-tighter">— David, Arquitecto</p>
-                        </div>
+                        <div class="mt-auto"><p class="font-bold text-xs uppercase tracking-tighter" data-i18n="case-3-n">— David, Arquitecto</p></div>
                     </div>
                 </div>
             </div>
@@ -319,34 +298,34 @@
     <!-- Lead Magnet Section -->
     <section id="catalogo" class="py-20 md:py-24 px-6 bg-black text-white relative">
         <div class="max-w-4xl mx-auto text-center mb-16">
-            <h2 class="text-3xl sm:text-5xl font-black uppercase mb-6 tracking-tighter text-white text-center">Acceso a Cuenta <span class="text-singular-yellow">Wholesale</span></h2>
-            <p class="text-gray-400 text-sm sm:text-lg leading-relaxed text-center">Descargue el Catálogo 2025 y reciba precios de distribuidor directamente en su correo corporativo.</p>
+            <h2 class="text-3xl sm:text-5xl font-black uppercase mb-6 tracking-tighter"><span data-i18n="form-title">Acceso a Cuenta</span> <span class="text-singular-yellow" data-i18n="form-title-alt">Wholesale</span></h2>
+            <p class="text-gray-400 text-sm sm:text-lg leading-relaxed text-center" data-i18n="form-desc">Descargue el Catálogo 2025 y reciba precios de distribuidor directamente en su correo corporativo.</p>
         </div>
         
         <div class="max-w-xl mx-auto bg-white text-black p-8 sm:p-10 shadow-2xl">
             <form id="leadForm" class="space-y-6">
                 <div class="border-b-2 border-gray-100 focus-within:border-singular-yellow transition">
-                    <label class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">Nombre y Apellido</label>
+                    <label class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1" data-i18n="label-name">Nombre y Apellido</label>
                     <input type="text" required class="w-full py-2 outline-none font-bold uppercase text-sm">
                 </div>
                 <div class="border-b-2 border-gray-100 focus-within:border-singular-yellow transition">
-                    <label class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">Compañía</label>
+                    <label class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1" data-i18n="label-company">Compañía</label>
                     <input type="text" required class="w-full py-2 outline-none font-bold uppercase text-sm">
                 </div>
                 <div class="border-b-2 border-gray-100 focus-within:border-singular-yellow transition">
-                    <label class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">Email Corporativo</label>
+                    <label class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1" data-i18n="label-email">Email Corporativo</label>
                     <input type="email" required class="w-full py-2 outline-none font-bold text-sm">
                 </div>
                 <div class="border-b-2 border-gray-100 focus-within:border-singular-yellow transition">
-                    <label class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">WhatsApp</label>
+                    <label class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1" data-i18n="label-whatsapp">WhatsApp</label>
                     <input type="tel" required class="w-full py-2 outline-none font-bold text-sm">
                 </div>
                 
-                <button type="submit" class="w-full bg-singular-yellow text-black font-black uppercase py-5 tracking-[0.2em] btn-hover text-sm shadow-lg">
+                <button type="submit" class="w-full bg-singular-yellow text-black font-black uppercase py-5 tracking-[0.2em] btn-hover text-sm shadow-lg" data-i18n="form-submit">
                     Obtener Catálogo y Precios
                 </button>
             </form>
-            <div id="formSuccess" class="hidden text-center py-4 bg-green-50 text-green-700 font-bold uppercase text-xs mt-4">
+            <div id="formSuccess" class="hidden text-center py-4 bg-green-50 text-green-700 font-bold uppercase text-xs mt-4" data-i18n="form-success">
                 Solicitud enviada con éxito.
             </div>
         </div>
@@ -354,34 +333,80 @@
 
     <!-- Footer -->
     <footer class="bg-black text-gray-500 py-12 px-6 border-t border-gray-900 text-center">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="flex items-center space-x-2 text-white">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-white">
+            <div class="flex items-center space-x-2">
                 <div class="bg-singular-yellow h-6 w-1"></div>
                 <span class="font-black uppercase tracking-tighter">Singular Glass Hardware</span>
             </div>
-            <div class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-right">
+            <div class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-right text-gray-500">
                 Medley, Florida | Costa a Costa USA | &copy; 2025
             </div>
         </div>
     </footer>
 
     <script>
-        // Manejo del menú móvil
+        const translations = {
+            'es': {
+                'nav-soluciones': 'Soluciones', 'nav-proyectos': 'Proyectos', 'nav-casos': 'Casos', 'nav-catalogo': 'Catálogo',
+                'btn-cotizar': 'Cotizar', 'btn-whatsapp': 'Cotizar vía WhatsApp', 'btn-catalog': 'Ver Catálogo 2025',
+                'hero-title-1': 'Atención Personalizada', 'hero-title-2': 'y', 'hero-title-3': 'Pedidos Exprés',
+                'hero-question': '¿Te ha pasado que estás a mitad de un proyecto y te quedas sin materiales por falta de un envío eficaz?',
+                'hero-desc': 'En Singular Glass suministramos herrajes certificados para proyectos de alto tráfico. Envíos de costa a costa desde Medley, FL. Agilidad vía WhatsApp para el contratista moderno.',
+                'puv-tag': 'Nuestra Ventaja Competitiva',
+                'puv-1-t': 'Adiós a la Burocracia', 'puv-1-d': 'El tiempo es dinero en obra. Olvide los formularios infinitos. Cotice y pida sus herrajes en segundos vía WhatsApp.',
+                'puv-2-t': 'Precios de Proyecto', 'puv-2-d': 'Proteja sus márgenes. Ofrecemos tarifas comerciales exclusivas y escalabilidad para proyectos B2B de gran volumen.',
+                'puv-3-t': 'Respaldo Certificado', 'puv-3-d': 'Authorized Partner de CRL y U.S. Aluminum. Suministramos hardware con garantía oficial para alto tráfico.',
+                'puv-4-t': 'Acabados Cohesivos', 'puv-4-d': 'Ecosistema total en Chrome, Matte Black y Satin Brass. El mismo tono exacto en cada pieza de su proyecto.',
+                'puv-5-t': 'Logística Nacional', 'puv-5-d': 'Desde Medley, Florida, despachamos de costa a costa con embalaje industrial reforzado para seguridad total.',
+                'card-cta-wa': 'Consultar WhatsApp', 'card-cta-price': 'Pedir Cotización', 'card-cta-warranty': 'Ver Garantías', 'card-cta-colors': 'Gama de Colores', 'card-cta-log': 'Cotizar Envío',
+                'projects-tag': 'Proyectos en Acción', 'cases-tag': 'Casos de Éxito',
+                'case-1-t': 'Coherencia Visual', 'case-1-d': '"María estaba frustrada porque las bisagras y soportes nunca tenían el mismo tono. Descubrió Singular Glass y pudo unificar toda la casa."', 'case-1-n': '— María, Diseñadora de Interiores',
+                'case-2-t': 'Urgencia en Obra', 'case-2-d': '"A Carlos le falló su proveedor. Usó el servicio de Pedido Exprés de Singular y recibió todo a tiempo para no retrasar la obra."', 'case-2-n': '— Carlos, Contratista de Proyectos',
+                'case-3-t': 'Adaptabilidad Técnica', 'case-3-d': '"Diseñar una barandilla curva era un problema. Los soportes ajustables de Singular permitieron adaptar el hardware fácilmente."', 'case-3-n': '— David, Arquitecto',
+                'form-title': 'Acceso a Cuenta', 'form-title-alt': 'Wholesale', 'form-desc': 'Descargue el Catálogo 2025 y reciba precios de distribuidor directamente en su correo corporativo.',
+                'label-name': 'Nombre y Apellido', 'label-company': 'Compañía', 'label-email': 'Email Corporativo', 'label-whatsapp': 'WhatsApp',
+                'form-submit': 'Obtener Catálogo y Precios', 'form-success': 'Solicitud enviada con éxito.'
+            },
+            'en': {
+                'nav-soluciones': 'Solutions', 'nav-proyectos': 'Projects', 'nav-casos': 'Cases', 'nav-catalogo': 'Catalog',
+                'btn-cotizar': 'Quote', 'btn-whatsapp': 'Quote via WhatsApp', 'btn-catalog': 'View 2025 Catalog',
+                'hero-title-1': 'Personalized Service', 'hero-title-2': 'and', 'hero-title-3': 'Express Orders',
+                'hero-question': 'Have you ever been in the middle of a project and run out of materials due to ineffective shipping?',
+                'hero-desc': 'At Singular Glass we supply certified hardware for high-traffic projects. Coast-to-coast shipping from Medley, FL. WhatsApp agility for the modern contractor.',
+                'puv-tag': 'Our Competitive Advantage',
+                'puv-1-t': 'Goodbye Bureaucracy', 'puv-1-d': 'Time is money. Forget endless forms. Quote and order your hardware in seconds via WhatsApp.',
+                'puv-2-t': 'Project Pricing', 'puv-2-d': 'Protect your margins. We offer exclusive commercial rates and scalability for large volume B2B projects.',
+                'puv-3-t': 'Certified Support', 'puv-3-d': 'Authorized CRL & U.S. Aluminum Partner. We supply hardware with official warranty for high traffic.',
+                'puv-4-t': 'Cohesive Finishes', 'puv-4-d': 'Total ecosystem in Chrome, Matte Black, and Satin Brass. The exact same tone on every piece of your project.',
+                'puv-5-t': 'National Logistics', 'puv-5-d': 'From Medley, Florida, we ship coast-to-coast with reinforced industrial packaging for total security.',
+                'card-cta-wa': 'Inquire on WhatsApp', 'card-cta-price': 'Get a Quote', 'card-cta-warranty': 'View Warranties', 'card-cta-colors': 'Color Range', 'card-cta-log': 'Quote Shipping',
+                'projects-tag': 'Projects in Action', 'cases-tag': 'Success Stories',
+                'case-1-t': 'Visual Coherence', 'case-1-d': '"Maria was frustrated because hinges and brackets never matched. She found Singular Glass and unified the whole house."', 'case-1-n': '— Maria, Interior Designer',
+                'case-2-t': 'On-Site Urgency', 'case-2-d': '"Carlos\'s local supplier failed him. He used Singular\'s Express Order service and received everything on time to avoid delays."', 'case-2-n': '— Carlos, Project Contractor',
+                'case-3-t': 'Technical Adaptability', 'case-3-d': '"Designing a curved railing was a problem. Singular\'s adjustable brackets allowed the hardware to adapt to the angle easily."', 'case-3-n': '— David, Architect',
+                'form-title': 'Wholesale', 'form-title-alt': 'Account Access', 'form-desc': 'Download the 2025 Catalog and receive distributor pricing directly in your corporate email.',
+                'label-name': 'Full Name', 'label-company': 'Company Name', 'label-email': 'Corporate Email', 'label-whatsapp': 'WhatsApp Number',
+                'form-submit': 'Get Catalog & Prices', 'form-success': 'Request sent successfully.'
+            }
+        };
+
+        function switchLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            document.querySelectorAll('.es-btn').forEach(btn => lang === 'es' ? btn.classList.add('active') : btn.classList.remove('active'));
+            document.querySelectorAll('.en-btn').forEach(btn => lang === 'en' ? btn.classList.add('active') : btn.classList.remove('active'));
+            document.documentElement.lang = lang;
+        }
+
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Cerrar menú al hacer clic en un enlace
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-        // Manejo del formulario
         document.getElementById('leadForm').addEventListener('submit', function(e) {
             e.preventDefault();
             this.style.opacity = '0.5';
