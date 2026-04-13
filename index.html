@@ -66,18 +66,31 @@
             </div>
             
             <!-- Desktop Nav -->
-            <div class="hidden md:flex items-center space-x-6 lg:space-x-8 text-xs font-bold uppercase tracking-widest text-gray-400">
+            <div class="hidden md:flex items-center space-x-4 lg:space-x-8 text-xs font-bold uppercase tracking-widest text-gray-400">
                 <a href="#soluciones" class="hover:text-singular-yellow transition">Soluciones</a>
                 <a href="#proyectos" class="hover:text-singular-yellow transition">Proyectos</a>
                 <a href="#casos" class="hover:text-singular-yellow transition">Casos</a>
-                <a href="#catalogo" class="hover:text-singular-yellow transition text-singular-yellow">Catálogo</a>
+                <a href="#catalogo" class="hover:text-singular-yellow transition text-singular-yellow font-black">Catálogo</a>
+                
+                <!-- Selector de Idioma -->
+                <div class="flex items-center border border-gray-800 rounded-full overflow-hidden bg-gray-900 ml-2">
+                    <button class="bg-singular-yellow text-black px-2 py-1 text-[10px] font-black">ES</button>
+                    <button class="px-2 py-1 text-[10px] hover:text-white transition">EN</button>
+                </div>
+
                 <a href="https://wa.me/13050000000" class="bg-singular-yellow text-black px-6 py-2 rounded-sm btn-hover font-black">Cotizar</a>
             </div>
 
-            <!-- Mobile Toggle -->
-            <button id="menu-toggle" class="md:hidden text-white focus:outline-none p-2">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
+            <!-- Mobile Toggle / Language -->
+            <div class="flex items-center space-x-3 md:hidden">
+                <div class="flex items-center border border-gray-800 rounded-full overflow-hidden bg-gray-900">
+                    <button class="bg-singular-yellow text-black px-2 py-1 text-[9px] font-black">ES</button>
+                    <button class="px-2 py-1 text-[9px] text-gray-400">EN</button>
+                </div>
+                <button id="menu-toggle" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
         </div>
 
         <!-- Mobile Nav Menu -->
@@ -152,50 +165,65 @@
             <div class="bg-white p-8 shadow-md flex flex-col h-full border-b-8 border-black hover:shadow-2xl transition-all group">
                 <div class="w-10 h-10 bg-black text-singular-yellow flex items-center justify-center mb-6 font-black text-sm group-hover:bg-singular-yellow group-hover:text-black transition-colors">01</div>
                 <h3 class="text-lg font-black mb-4 uppercase tracking-tight leading-none">Adiós a la Burocracia</h3>
-                <p class="text-gray-500 text-xs mb-6 flex-grow leading-relaxed">
+                <p class="text-gray-500 text-[11px] mb-6 flex-grow leading-relaxed">
                     El tiempo es dinero en obra. Olvide los formularios infinitos. Cotice y pida sus herrajes en segundos vía WhatsApp.
                 </p>
-                <div class="h-[2px] w-8 bg-singular-yellow"></div>
+                <a href="https://wa.me/13050000000" class="text-[10px] font-black uppercase tracking-widest text-black flex items-center group-hover:text-singular-yellow transition-colors mt-auto">
+                    Consultar WhatsApp
+                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
             </div>
 
             <!-- 02: Precios de Proyecto -->
             <div class="bg-white p-8 shadow-md flex flex-col h-full border-b-8 border-singular-yellow hover:shadow-2xl transition-all group">
                 <div class="w-10 h-10 bg-singular-yellow text-black flex items-center justify-center mb-6 font-black text-sm text-black">02</div>
                 <h3 class="text-lg font-black mb-4 uppercase tracking-tight leading-none">Precios de Proyecto</h3>
-                <p class="text-gray-500 text-xs mb-6 flex-grow leading-relaxed">
+                <p class="text-gray-500 text-[11px] mb-6 flex-grow leading-relaxed">
                     Proteja sus márgenes. Ofrecemos tarifas comerciales exclusivas y escalabilidad para proyectos B2B de gran volumen.
                 </p>
-                <div class="h-[2px] w-8 bg-black"></div>
+                <a href="https://wa.me/13050000000" class="text-[10px] font-black uppercase tracking-widest text-black flex items-center group-hover:text-singular-yellow transition-colors mt-auto">
+                    Pedir Cotización
+                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
             </div>
 
             <!-- 03: Respaldo Certificado -->
             <div class="bg-white p-8 shadow-md flex flex-col h-full border-b-8 border-black hover:shadow-2xl transition-all group">
                 <div class="w-10 h-10 bg-black text-singular-yellow flex items-center justify-center mb-6 font-black text-sm group-hover:bg-singular-yellow group-hover:text-black transition-colors">03</div>
                 <h3 class="text-lg font-black mb-4 uppercase tracking-tight leading-none">Respaldo Certificado</h3>
-                <p class="text-gray-500 text-xs mb-6 flex-grow leading-relaxed">
+                <p class="text-gray-500 text-[11px] mb-6 flex-grow leading-relaxed">
                     Authorized Partner de CRL y U.S. Aluminum. Suministramos hardware con garantía oficial para alto tráfico.
                 </p>
-                <div class="h-[2px] w-8 bg-singular-yellow"></div>
+                <a href="https://wa.me/13050000000" class="text-[10px] font-black uppercase tracking-widest text-black flex items-center group-hover:text-singular-yellow transition-colors mt-auto">
+                    Ver Garantías
+                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
             </div>
 
             <!-- 04: Acabados Cohesivos -->
             <div class="bg-white p-8 shadow-md flex flex-col h-full border-b-8 border-singular-yellow hover:shadow-2xl transition-all group">
                 <div class="w-10 h-10 bg-singular-yellow text-black flex items-center justify-center mb-6 font-black text-sm text-black">04</div>
                 <h3 class="text-lg font-black mb-4 uppercase tracking-tight leading-none">Acabados Cohesivos</h3>
-                <p class="text-gray-500 text-xs mb-6 flex-grow leading-relaxed">
+                <p class="text-gray-500 text-[11px] mb-6 flex-grow leading-relaxed">
                     Ecosistema total en Chrome, Matte Black y Satin Brass. El mismo tono exacto en cada pieza de su proyecto.
                 </p>
-                <div class="h-[2px] w-8 bg-black"></div>
+                <a href="https://wa.me/13050000000" class="text-[10px] font-black uppercase tracking-widest text-black flex items-center group-hover:text-singular-yellow transition-colors mt-auto">
+                    Gama de Colores
+                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
             </div>
 
             <!-- 05: Logística Nacional -->
             <div class="bg-white p-8 shadow-md flex flex-col h-full border-b-8 border-black hover:shadow-2xl transition-all group">
                 <div class="w-10 h-10 bg-black text-singular-yellow flex items-center justify-center mb-6 font-black text-sm group-hover:bg-singular-yellow group-hover:text-black transition-colors">05</div>
                 <h3 class="text-lg font-black mb-4 uppercase tracking-tight leading-none">Logística Nacional</h3>
-                <p class="text-gray-500 text-xs mb-6 flex-grow leading-relaxed">
+                <p class="text-gray-500 text-[11px] mb-6 flex-grow leading-relaxed">
                     Desde Medley, Florida, despachamos de costa a costa con embalaje industrial reforzado para seguridad total.
                 </p>
-                <div class="h-[2px] w-8 bg-singular-yellow"></div>
+                <a href="https://wa.me/13050000000" class="text-[10px] font-black uppercase tracking-widest text-black flex items-center group-hover:text-singular-yellow transition-colors mt-auto">
+                    Cotizar Envío
+                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
             </div>
         </div>
     </section>
